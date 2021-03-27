@@ -5,11 +5,11 @@ const DB_URL = `mongodb://${DB_USER}:${PASSWORD}@localhost:27017/newtonSchool`;
 const mongoose= require('mongoose');
 function connectToDatabase() {
 
-    mongoose.connect(DB_URL).then(()=>{
-        console.log("Dataconnection connected successfull");
-    }).catch((err)=>{
-        console.log(err);
-    })
+    return mongoose.connect(DB_URL, {useUnifiedTopology: true});
+    //     console.log("Dataconnection connected successfull");
+    // }).catch((err)=>{
+    //     console.log(err);
+    // })
 }
 
 module.exports = {connectToDatabase};
