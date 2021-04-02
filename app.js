@@ -1,9 +1,17 @@
+const authRoute=require('./authentication/authRoute');
+
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser')
 // const mongoose =require('mongoose');
 require('dotenv').config({path:'./config/config.env'});
 app.use(bodyParser.json());
+
+
+// app.use(bodyParser.json()); app.use("/auth",authRoute);
+
+app.use("/auth",authRoute);
+
 const database=require('./database/db.js');
 
 database.connectToDatabase().then(response =>{
