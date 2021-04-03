@@ -1,6 +1,9 @@
-function registerUser(userDetail) { 
-    console.log(userDetail);
-     return { success: "Ok" } 
-    } 
+const user=require("../database/DatabaseSchema/user");
+
+async function registerUser(userDetail) { 
+    const result = await user.save(userDetail);
+        console.log(result);
+        return result;
+    }
      
 module.exports = { registerUser }
