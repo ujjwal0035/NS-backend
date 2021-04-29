@@ -1,7 +1,7 @@
-const user=require("../database/DatabaseSchema/user");
+const users=require("../database/DatabaseSchema/user.js");
 
 async function registerUser(userDetail) { 
-    const result = await user.save(userDetail);
+    const result = await users.create(userDetail);
         console.log(result);
         return result;
     }

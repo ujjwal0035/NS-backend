@@ -8,8 +8,6 @@ require('dotenv').config({path:'./config/config.env'});
 app.use(bodyParser.json());
 
 
-// app.use(bodyParser.json()); app.use("/auth",authRoute);
-
 app.use("/auth",authRoute);
 
 const database=require('./database/db.js');

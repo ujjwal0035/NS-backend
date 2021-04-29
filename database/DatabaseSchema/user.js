@@ -13,8 +13,9 @@ const mongoose=require('mongoose');
       createdAt: {type: Date, default: Date.now},
       updatedAt: {type: Date, default: Date.now}
   }
-  const user=new Schema(defination);
-  module.export = mongoose.model('user',user);
+  const users=new Schema(defination);
+  
+  module.exports = mongoose.model('users',users);
  
  
  
