@@ -17,9 +17,11 @@ async function registerUser(userDetail) {
     userDetail.password=encryptPassword;
 
     const result = await users.create(userDetail);
-        console.log(result);
+        const token=commonLib.generateToken();
         return result;
     }
+
+
     async function isUserExists(email){
         return user.find({email:email}).lean();
     } 
