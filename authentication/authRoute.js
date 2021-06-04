@@ -1,16 +1,10 @@
-// const router = require('express').Router();
+const router = require('express').Router({ caseSensitive: true, strict: true });
+const authController = require('../authentication/authController');
 
 
-
-// router.get('/register',(req, res) =>{
-//     res.status(200).json({success: "Success"});
-// })
-
-
-// module.exports = router;
-
-const router = require('express').Router({ caseSensitive: true, strict: true }); 
-const authController = require('../authentication/authController'); 
-router.post('/register',authController.registerUser); 
+router.post('/register', authController.registerUser);
+router.get('/login', authController.login);
+router.get('/forgotPassword', authController.generateResetPasswordLink);
+router.put('/resetPassword', authController.resetPassword);
 
 module.exports = router;
