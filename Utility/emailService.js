@@ -1,5 +1,17 @@
 var nodemailer = require("nodemailer");
-// var xoauth2 = require('xoauth2');
+
+// var smtpTransport = nodemailer.createTransport("SMTP", {
+//   service: "Gmail",
+//   auth: {
+//     XOAuth2: {
+//       user: "ujjwalkumar.0035@gmail.com", // Your gmail address.
+//                                             // Not @developer.gserviceaccount.com
+//       clientId: process.env.CLIENT_ID,
+//       clientSecret: process.env.CLIENT_SECRET,
+//       refreshToken: process.env.CLIENT_REFRESH
+//     }
+//   }
+// });
 
 var smtpTransport = nodemailer.createTransport({
     host: 'smtp.gmail.com',
@@ -7,31 +19,32 @@ var smtpTransport = nodemailer.createTransport({
     secure: true,
     auth: {
         type: 'OAuth2',
-        user: "neeraj@unthinkable.co", // Your gmail address.
+        user: "ujjwalkumar.0035@gmail.com", // Your gmail address.
         clientId: process.env.CLIENT_ID,
         clientSecret: process.env.CLIENT_SECRET,
         refreshToken: process.env.CLIENT_REFRESH,
         accessToken: process.env.CLIENT_ACCESS_TOKEN
     }
-});
+}); 
 
-
-
-async function sendEmail(recieverId,subject, text) {
+async function sendEmail(recieverId,text){
     var mailOptions = {
-        from: "neeraj@unthinkable.co",
+        from: "ujjwalkumar.0035@gmail.com",
         to: recieverId,
-        subject: subject,
+        subject: "Newton school Node project",
         generateTextFromHTML: true,
         html: `<b>${text}</b>`
-    };
+      };
 
-    let response = await smtpTransport.sendMail(mailOptions);
-    smtpTransport.close();
-    return response;
+      
+      let response = await smtpTransport.sendEmail(mailOptions);
+      smtpTransport.close();
+      return response;
+
 }
 
-module.exports = {
+module.exports={
     sendEmail
 }
+
 
